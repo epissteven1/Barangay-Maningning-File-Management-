@@ -15,8 +15,8 @@ if ($result) {
             <td>{$row['file_uploads']}</td>
             <td>{$row['upload_date']}</td>
             <td>
-               <a href='download_file.php?action=download&file_id={$row['file_id']}'>Download</a>
-               <a href='read.php?action=view&file_id={$row['file_id']}'>Read</a>
+               <a href='download_file.php?action=download&file_id={$row['file_id']}'class='btn btn-success'>Download</a>
+               <a href='read.php?action=view&file_id={$row['file_id']}'class='btn btn-primary'>Read</a>
             </td>
          </tr>";
    
@@ -29,3 +29,5 @@ if ($result) {
          </tr>";
 }
 ?>
+
+
