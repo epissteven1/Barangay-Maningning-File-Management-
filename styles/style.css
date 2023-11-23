@@ -1,0 +1,294 @@
+@font-face {
+    font-family: primary-font;
+    src: url(../fonts/Montserrat/Montserrat-VariableFont_wght.ttf) format("truetype-variations");
+    font-weight: 1 999;
+  }
+  
+  :root {
+    --main-background-color: #ebebeb;
+    --primary-color: #a30000;
+    --off-white-color: #fffffc;
+    --secondary-text-color: #666666;
+    --page-fonts: primary-font, sans-serif;
+    --section-shadow: 0 0.2rem 0.4rem #c5c5c5;
+    font-size: calc(5px + 0.4vh + 0.4vw);
+  }
+  
+  body {
+    background: var(--main-background-color);
+    min-height: 100vh;
+    display: grid;
+    grid: "sidebar main-header" max-content
+          "sidebar main" 1fr / 1fr 4fr;
+    font-family: var(--page-fonts);
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0.8rem 0;
+  }
+  
+  h3 {
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  p {
+    margin: 0.2rem 0 0 0;
+    
+    color: var(--secondary-text-color);
+  }
+  
+  #sidebar {
+    background-color: var(--main-background-color) ;
+    color: var(--off-black-color);
+    grid-area: sidebar;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1.2rem 0.6rem;
+    align-content: start;
+    align-items: end;
+    padding: 1.2rem 4rem 0 1.2rem;
+  }
+  #sidebar #sidebar-logo {
+    width: 3rem;
+  }
+  
+  #sidebar h1, #sidebar #sidebar-logo {
+    align-self: center;
+  }
+  
+  #sidebar img {
+    justify-self: center;
+    width: 1.4rem;
+    cursor: pointer;
+  }
+  
+  #sidebar #home-icon {
+    width: 1.6rem;
+  }
+  
+  #sidebar a {
+    color: #151414;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 550;
+  }
+  
+  .menu-start {
+    margin-top: 1.5rem;
+  }
+  
+  .menu-end {
+    margin-bottom: 2rem;
+  }
+  
+  #main-header {
+    background-color: var(--off-white-color);
+    grid-area: main-header;
+    display: grid;
+    padding: 1rem 4rem 1rem 2rem;
+    box-shadow: var(--section-shadow);
+  }
+  
+  #topbar, #opener {
+    display: grid;
+    grid: max-content / max-content auto;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  
+  #topbar {
+    margin-bottom: 2rem;
+  }
+  
+  #topbar img {
+    width: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .profile-picture {
+    border-radius: 100%;
+  }
+  
+  #topbar .profile-picture {
+    width: 2.5rem;
+    margin: 0 0.25rem;
+  }
+  
+  #search-bar {
+    background-color: var(--off-white-color);
+    border: black 1px solid;
+    border-radius: 1.75rem;
+    height: 1.75rem;
+    width: 35rem;
+    padding-left: 0.75rem;
+  }
+  
+  #opener h5 {
+    margin: 0 0 0.25rem 0;
+    font-size: 0.9rem;
+    font-weight: 650;
+  }
+  
+  #opener .profile-picture {
+    width: 4rem;
+  }
+  
+  #opener button {
+    margin: 0.25rem;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 1.5rem;
+    background-color: #9b00a3;
+    color: var(--off-white-color);
+    font-weight: 550;
+    cursor: pointer;
+  }
+  
+  main {
+    grid-area: main;
+    display: grid;
+    gap: 1.25rem;
+    grid: "projects announcements" 1fr
+          "projects trending" 1fr / 5fr 2fr;
+    margin: 1.25rem 1.75rem 3.5rem 1.25rem;
+    
+  }
+  
+  #projects, #announcements, #trending {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  
+  #projects {
+    grid-area: projects;
+    color: #501a77f5;
+  }
+  
+  #project-preview, #announcement-preview, #trending-preview {
+    display: grid;
+  }
+  
+  #announcement-preview, #trending-preview {
+    background-color: var(--off-white-color);
+    border-radius: 0.5rem;
+    box-shadow: var(--section-shadow);
+  }
+  
+  #project-preview {
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    grid-auto-rows: 1fr;
+  
+  }
+  
+  article {
+    background-color: var(--off-white-color);
+  
+  }
+  
+  #projects article {
+    background: linear-gradient(to right, black 0, black 0.5rem, var(--off-white-color) 0.5rem, var(--off-white-color) 100%);
+    box-shadow: var(--section-shadow);
+    position: relative;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  
+  }
+  
+  #projects p {
+    font-size: 0.95rem;
+    color: #030808;
+  }
+  
+  #projects .icon-grid {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min-content;
+    gap: 1.5rem;
+   
+  }
+  
+  #projects img {
+    width: 1.5rem;
+    cursor: pointer;
+  }
+  
+  #announcements {
+    grid-area: announcements;
+  }
+  
+  #announcements p {
+    font-size: 0.7rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  #announcement-preview {
+    grid-auto-rows: 1fr;
+    padding: 1rem 1.5rem;
+  }
+  
+  #announcements article {
+    padding: 0.8rem 0.5rem;
+    border-bottom: var(--main-background-color) 0.1rem solid;
+  }
+  
+  #announcements .announcement-end {
+    border: none;
+  }
+  
+  #trending {
+    grid-area: trending;
+  }
+  
+  #trending-preview {
+    grid-template-columns: max-content max-content;
+    padding: 0.5rem 1.5rem;
+  }
+  
+  #trending .profile-picture {
+    width: 2.5rem;
+    place-self: center;
+    margin-right: 1rem;
+    grid-row-end: span 2;
+  }
+  
+  #trending p {
+    font-size: 0.8rem;
+  }
+  
+  #trending .user {
+    color: rgb(16, 218, 66);
+    align-self: end;
+    font-weight: 500;
+  }
+  @media screen and (max-width: 768px) {
+  
+    
+  }
+  
+  

@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    
+    width: 800px;
+    height: 800px;
+    margin: 50px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-form {
+    text-align: center;
+}
+
+.file-upload {
+    margin-top: 10px;
+}
+
+.upload, .update {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.upload {
+    background-color: #4caf50;
+    color: white;
+}
+
+.update {
+    background-color: #008CBA;
+    color: white;
+}
+
+.profile-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+}
+
+h2, p {
+    margin: 10px 0;
+}

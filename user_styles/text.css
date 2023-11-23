@@ -1,0 +1,65 @@
+/* Styles for header */
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  /* Styles for main content */
+  
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .quick-actions button {
+    background: #007bff; 
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  .summary {
+    display: flex;
+    justify-content: space-between;  
+    margin: 20px 0;
+  }
+  
+  .summary strong {
+    font-size: 1.2em;
+  }
+  
+  .recent-activity {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  /* Responsive styles */
+  
+  @media (max-width: 600px) {
+  
+    .quick-actions button {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    
+    .summary {
+      flex-direction: column;
+    }
+    
+    .summary div {
+      margin-bottom: 10px;
+    }
+    
+  }

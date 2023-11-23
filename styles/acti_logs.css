@@ -1,0 +1,33 @@
+/* styles/admin_activity_log.css */
+.activity-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.activity-table th, .activity-table td {
+    border: 1px solid #055844;
+    padding: 8px;
+    text-align: left;
+}
+
+.activity-table th {
+    background-color: #68696da8;
+}
+
+.timestamp {
+    width: 20%;
+}
+
+.activity {
+    width: 80%;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}

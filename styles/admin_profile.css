@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+}
+.container {
+    display:flex;
+    justify-content: center;
+
+    height: 70vh;
+    margin: 0;
+}
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    padding: 50px;
+    
+}
+img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    margin-left:30px;
+}
+.file-input {
+    margin-top: 10px;
+    
+}
+.upload{
+    margin-top: 10px;
+}
+.update {
+    color: rgb(3, 0, 14) ;
+    background-color: rgba(9, 205, 240, 0.637);
+    margin-top: 10px;
+    
+}
+.update:hover {
+  background-color: blue; 
+}
+h2, p {
+    color: blue;
+    
+}
+h2:hover {
+    color: red;
+    cursor: pointer;
+
+}
+p:hover{
+    color: red;
+    cursor: pointer;
+}
