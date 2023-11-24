@@ -1,34 +1,26 @@
 <?php
-include('connection.php');
+include 'connection.php';
+
+$response = array();
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-
-    // Query your database to get the file name and other details for the given ID
-    $query = "SELECT file_uploads FROM documents WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $stmt->bind_result($fileName);
-
-    if ($stmt->fetch()) {
-        // Close the first statement before proceeding
-        $stmt->close();
-
-        // Set a JavaScript variable to confirm the deletion
-        echo "<script>
-            var userConfirmed = confirm('Are you sure you want to delete the file: $fileName?');
-            if (userConfirmed) {
-                window.location.href = 'delete_file.php?id=$id';
-            } else {
-                alert('File deletion canceled.');
-                window.location.href = 'admin_docs.php';
-            }
-        </script>";
+    // Delete applicant from the database
+    $deleteQuery = "DELETE FROM documents WHERE file_id = ?";
+    $deleteStmt = $conn->prepare($deleteQuery);
+    $deleteStmt->bind_param('i', $id);
+    
+    if ($deleteStmt->execute()) {
+        $response['success'] = true;
     } else {
-        echo "Document not found.";
+        $response['success'] = false;
+        $response['error'] = $conn->error; // Add this line to get the specific error
     }
 } else {
-    echo "Document ID parameter is missing.";
+    $response['success'] = false;
+    $response['error'] = 'Missing applicant ID';
 }
+
+echo json_encode($response);
 ?>
+
