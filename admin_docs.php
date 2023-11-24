@@ -180,13 +180,42 @@ while ($row = mysqli_fetch_assoc($result)) {
 // Function to handle the "Edit" button click
 function editDocument(id) {
     // Redirect to the edit document page with the document ID as a parameter
+    
     window.location.href = "update.php?id=" + id;
 }
 
 // Function to handle the "Delete" button click
 function deleteDocument(id) {
+    if (confirm('Are you sure you want to delete this File?')) {
     window.location.href = "delete.php?id=" +id;
+
+     // Use the applicantId in the data for the AJAX request
+     $.ajax({
+            type: 'GET',
+            url: 'delete.php',
+            data: { id: applicantId },
+            success: function(response) { 
+              
+                var data = JSON.parse(response);
+                console.log(data); // Add this line to log the response
+                console.log(applicantId);
+
+                if (data.success) {
+                    // Use the applicantId in the redirect URL
+                    window.location.href = 'admin_index.php';
+                } else {
+                    alert('Failed to delete Document.');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', status, error);
+            }
+            
+        });
+    }
 }
+
+                    
 </script>
 </body>
 </html>
