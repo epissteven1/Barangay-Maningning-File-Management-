@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="user_styles/dash.css">
     <link rel="stylesheet" href="user_styles/applicant_profile.css">
     <style>
@@ -38,6 +37,7 @@
             transition: 0.5s;
             padding-top: 60px;
             cursor: pointer;
+            overflow-y: scroll;
         }
 
         #mySidebar a {
@@ -70,62 +70,61 @@
             padding: 10px 15px;
             border: none;
         }
-        .submenu {
-    display: none;
+                        .submenu {
+                    display: none;
 
-    padding-top: 10px;
-}
-.openbtn {
-      position: fixed;
-      top: 15px; /* Adjust the top position as needed */
-      left: 30px; /* Adjust the left position as needed */
-      z-index: 2; /* Ensure the button is above other elements */
-    }
+                    padding-top: 10px;
+                }
+                .openbtn {
+                    position: fixed;
+                    top: 15px; /* Adjust the top position as needed */
+                    left: 30px; /* Adjust the left position as needed */
+                    z-index: 2; /* Ensure the button is above other elements */
+                    }
 
-.submenu a {
-    padding: 8px 16px;
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    display: block;
-}
+                .submenu a {
+                    padding: 8px 16px;
+                    text-decoration: none;
+                    font-size: 18px;
+                    color: white;
+                    display: block;
+                }
 
-.submenu a:hover {
-    background-color: #555;
-}
+                .submenu a:hover {
+                    background-color: #555;
+                }
     </style>
 </head>
 <body>
 
     <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#" class="closebtn" onclick="closeNav()">×</a>
         <img id="sidebar-logo" src="image/maningning.jpg" alt="Dashboard logo,">
-        <a href="javascript:void(0)" onclick="loadContent('dashboard.php')">Home</a>
-        <a href="javascript:void(0)" onclick="loadContent('applicant_profile.php')">Profile</a>
-        <a href="javascript:void(0)" onclick="loadContent('document_list.php')">Document</a>      
-        <a href="javascript:void(0)" onclick="loadContent('applicant_request.php')">Request Documents</a>  
-        <a href="javascript:void(0)" onclick="loadContent('applicant_activity_log.php')">History</a>
-        <a class="menu-start" href="javascript:void(0)" onclick="toggleSubMenu()">Settings</a>
+        <a href="#" onclick="loadContent('dashboard.php')">Home</a>
+        <a href="#" onclick="loadContent('applicant_profile.php')">Profile</a>
+        <a href="#" onclick="loadContent('document_list.php')">Document</a>      
+        <a href="#" onclick="loadContent('applicant_request.php')">Request Documents</a>  
+        <a href="#" onclick="loadContent('applicant_activity_log.php')">History</a>
+        <a class="menu-start" href="#" onclick="toggleSubMenu()">Settings</a>
         <div id="submenu" class="submenu">
-        <a href="javascript:void(0)" onclick="loadContent('change_password_form.php')">Change Password</a>
-        <a href="javascript:void(0)" onclick="loadContent('settings_security.php')">Security</a>
-        <a href="javascript:void(0)" onclick="loadContent('settings_security.php')">Security</a>
-        <a href="javascript:void(0)" onclick="loadContent('settings_security.php')">Security</a>
-        <a href="javascript:void(0)" onclick="loadContent('settings_security.php')">Security</a>
+        <a href="#" onclick="openChangePasswordModal()">Change Password</a>
+        <a href="#" onclick="confirmLogout()">Logout</a>
         <!-- Add more submenu items as needed -->
 </div>
     </div>
 
     <div id="main">
-        <button class="openbtn" onclick="toggleNav()">☰</button>
+       
         <div id="content-container">
             <?php include 'dashboard.php'; ?>
             <!-- Include your content here -->
         </div>
+          <?php include 'change_password_form.php'; ?>
+        <button class="openbtn" onclick="toggleNav()">☰</button>
     </div>
+    
 
-    <!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 <!-- Include your script with initializeDashboardJS -->
 <script src="../File Management/scripts/initializeDashboardJS.js"></script>
@@ -133,6 +132,25 @@
 <!-- Include your script with initializeButtons -->
 <script src="../File Management/scripts/initializeButtonsScript.js"></script>
     <script>
+function confirmLogout() {
+            var confirmLogout = confirm("Are you sure you want to logout?");
+            if (confirmLogout) {
+                // Use AJAX to send a request to the server
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "logout.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                     
+                        // Optionally, you can redirect the user to another page
+                        window.location.href = "applicant_login.php";
+                    }
+                };
+                xhr.send("logout=true");
+            }
+        }
+
+
       function toggleNav() {
       var sidebar = document.getElementById("mySidebar");
       var main = document.getElementById("main");
@@ -174,7 +192,7 @@
                 success: function (data) {
                     $('#content-container').html(data);
                     $('#content-container').css('height', '100%');
-                    $('#content-container').css('overflow-y', 'auto');
+                    $('#content-container').css('overflow-y', 'scroll');
 
                     // Set scroll position to the top
                     $('#content-container').scrollTop(0);

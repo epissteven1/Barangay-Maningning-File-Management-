@@ -12,7 +12,3 @@ function initializeDashboardJS() {
         });
     }
 }
-  // Call the initialization function when the document is ready
-  $(document).ready(function() {
-    initializeDashboardJS();
-});

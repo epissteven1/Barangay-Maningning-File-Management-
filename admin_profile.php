@@ -84,7 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div>
                     <input type="file" name="admin_profile_pic" id="profile-picture-input" style="display: none;" required>
-                    <!-- <button class="upload" type="button" onclick="changeProfilePicture()"></button> -->
+                    
+                    <button class="upload" type="button" onclick="changeProfilePicture()"></button>
                 </div>
                 <button class="update" type="submit">ChangeProfilePicture</button>
             </form>

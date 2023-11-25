@@ -1,22 +1,5 @@
-  <?php include 'connection.php'?>
+  <?php include 'connection.php';
 
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-
-    <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
-  <style>
-
-  </style>
-
-    <link rel="stylesheet" href="styles/admin_index.css">
-    <link rel="stylesheet" href="styles/normalize.css">
-    <!-- <link rel="stylesheet" href="styles/style.css"> -->
-    <script src="scripts/generate-elements.js" defer></script>
-  </head>
-  <body>
-    <?php
 session_start(); // Start the session
 
 if (isset($_SESSION['admin_id'])) {
@@ -34,6 +17,21 @@ if (isset($_SESSION['admin_id'])) {
     exit();
 }
 ?>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+
+
+
+    <link rel="stylesheet" href="styles/normalize.css">
+    <!-- <link rel="stylesheet" href="styles/style.css"> -->
+    <script src="scripts/generate-elements.js" defer></script>
+  </head>
+  <body>
+    
 
   
     <header id="main-header">
