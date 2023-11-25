@@ -143,7 +143,7 @@ function confirmLogout() {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                      
                         // Optionally, you can redirect the user to another page
-                        window.location.href = "applicant_login.php";
+                        window.location.href = "applicant_form.php";
                     }
                 };
                 xhr.send("logout=true");

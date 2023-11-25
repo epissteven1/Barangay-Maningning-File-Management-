@@ -12,7 +12,7 @@ if (isset($_SESSION['id'])) {
     $row = mysqli_fetch_assoc($result);
 } else {
     
-    header("Location: applicant_login.php");
+    header("Location: index.php");
     exit();
 }
 ?>
