@@ -45,7 +45,7 @@ if (isset($_SESSION['admin_id'])) {
     <div id="myDropdown" class="dropdown-content">
       <a href="#">Wapa</a>
       <a href="#">Wapa</a>
-      <a href="logout.php">Log Out</a>
+      <a href="logout.php" onclick = "confirmLogout()" >Log Out</a>
     </div>
   </div>
 
