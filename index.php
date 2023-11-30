@@ -1,189 +1,152 @@
-<?php
-session_start();
-include_once "connection.php";
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-        }
-        .container {
-            height: 100%;
-            width: 100%;
-            background-image:  linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(background/background2.jpg);
-            background-position: center;
-            background-size: cover;
-            position: absolute;
-      
-            
-        }
-        .form-box {
-            width: 380px;
-            height: 500px;
-            position: relative;
-            margin: 6% auto;
-            background: #fff;
-            padding: 5px;
-            overflow: hidden;
-          
-            
-        }
-        .button-box {
-            width: 220px;
-            margin: 35px auto;
-            position: relative;
-            box-shadow: 0 0 20px 9px #ff61241f;
-            border-radius: 30px;
-        }
-        .toggle-btn {
-            padding: 10px 30px;
-            cursor: pointer;
-            background: transparent;
-            border: 0;
-            outline: none;
-            position: relative;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
 
-        }
-        #btn {
-            top: 0;
-            left: 0;
-            position: absolute;
-            width: 110px;
-            height: 100%;
-            background: linear-gradient(to right, #ff105f, #ffad06);
-            border-radius: 30px;
-            transition: .5s;
-        }
-          
-        .input-group {
-            top: 150px;
-            position: absolute;
-            width: 280px;
-            transition: .5s;
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+    }
 
-        }
-        .input-field {
-            width: 100%;
-            padding: 10px 0;
-            margin: 5px 0;
-            border-left: 0;
-            border-top: 0;
-            border-right: 0;
-            border-bottom: 1px solid #999;
-            outline: none;
-            background: transparent;
+    .navbar a {
+      float: right;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      margin-right: 30px;
+    
+    }
+   
+    .dropdown {
+      float: right;
+      overflow: hidden;
+      margin-right: 30px;
 
-        }
-        .submit-btn {
-            width: 85%;
-            padding: 10px 30px;
-            cursor: pointer;
-            display: block;
-            margin: auto;
-            margin-top: 20px;
-            background: linear-gradient(to right, #ff105f, #ffad06);
-            border: 0;
-            outline: none;
-            border-radius: 30px;
+    }
 
-        }
-        #login {
-            left: 50px;
+    .dropdown .dropbtn {
+      font-size: 16px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
 
+    .navbar a:hover, .dropdown:hover .dropbtn {
+      background: linear-gradient(to right, #ff105f, #ffad06);
+    }
 
-        }
-        #register {
-            left: 450px;
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: black;
+      color: black;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
 
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+    .dropdown-content a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+     
+    }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-            z-index: 1;
-        }
+    .dropdown-content a:hover {
+      background-color: black;
+    }
 
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-    </style>
-    <title>Document</title>
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    select option {
+        color: white;
+        background-color: #333;
+        border: none;
+        outline: none;
+        padding: 14px 16px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 0;
+        
+    }
+  </style>
+  <script>
+    // JavaScript/jQuery to handle page reload on dropdown selection
+    $(document).ready(function () {
+      $('.dropdown-content a').on('click', function (e) {
+        e.preventDefault(); // Prevent the default link behavior
+        var href = $(this).attr('href');
+        // Use AJAX to load the content of the selected link
+        $.ajax({
+          url: href,
+          success: function (data) {
+            // Update the page content
+            $('body').html(data);
+          }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
-    <div class="container">
-        <div class="form-box">
-            <div class="button-box">
-                <div id="btn"></div>
-                <button type="button" class="toggle-btn" onclick="login()">Login</button>
-                <button type="button" class="toggle-btn" onclick="register()">Register</button>
 
-            </div>
-        
-        <form id="login" action="applicant_login.php" method="post" class="input-group">
-            <input type="text" name="username" class="input-field" placeholder="Username" required>
-            <input type="password" name="password" class="input-field" placeholder="Password" required>
-            <button type="submit" name="applicantlogin" class="submit-btn">Login</button>
-         </form>
-         <form  id="register" action="applicant_reg.php" method="post" class="input-group">
-     
-                <input  class="input-field" type="text" id="fullname" name="fullname" placeholder="Fullname">
-                <input  class="input-field" type="text" id="username" name="username" placeholder="Username" required>
-                <input  class="input-field"  type="email" id="email" name="email" placeholder="Email" required>
-                <input  class="input-field" type="password" name="password_1" placeholder="Password" required>
-                <input  class="input-field" type="password" name="password_2" placeholder="Confirm Password" required>
-                <input class="submit-btn" type="submit" name="register" value="Register">
-        
-         </form>
-       </div>
+<div class="navbar">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <div class="dropdown">
+    <select class="dropbtn" name="role" id="role">
+        <div class="drodown-content">
+
+        <option value="admin">Admin</option>
+        <option value="applicant">Applicant</option>
+    </select>
+  </div>
+  </div>
+
+</div>
+
+<div id="loginFormContainer">
+        <!-- Login form will be loaded here -->
+        <?php  include 'applicant_form.php';?>
     </div>
-    
-    <script>
-        var x = document.getElementById("login");
-        var y = document.getElementById("register");
-        var z = document.getElementById("btn");
-        function register(){
-            
-            x.style.left = "-400px";
-            y.style.left = "50px";
-            z.style.left = "110px";     
-        }
-        function login(){
-            x.style.left = "50px";
-            y.style.left = "450px";
-            z.style.left = "0px";
 
-        }
-        function setRole(role) {
-        // You can do something with the role, for example, store it in a variable or perform other actions.
-        console.log('Selected role:', role);
-    }
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#role").change(function() {
+                var selectedRole = $(this).val();
+
+                // Use AJAX to load the corresponding login form
+                $.ajax({
+                    type: "POST",
+                    url: "load_login_form.php",
+                    data: { role: selectedRole },
+                    success: function(response) {
+                        $("#loginFormContainer").html(response);
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
