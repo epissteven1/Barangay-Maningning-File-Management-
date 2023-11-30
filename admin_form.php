@@ -43,6 +43,7 @@ include_once "connection.php";
             position: relative;
             box-shadow: 0 0 20px 9px #ff61241f;
             border-radius: 30px;
+            margin-top: 40px;
         }
         .toggle-btn {
             padding: 10px 30px;
@@ -69,6 +70,7 @@ include_once "connection.php";
             position: absolute;
             width: 280px;
             transition: .5s;
+            margin-top: 40px;
 
         }
         .input-field {
@@ -83,7 +85,7 @@ include_once "connection.php";
             background: transparent;
 
         }
-        .submit-btn {
+        .submit-btn  {
             width: 85%;
             padding: 10px 30px;
             cursor: pointer;
@@ -133,12 +135,34 @@ include_once "connection.php";
         .dropdown:hover .dropdown-content {
             display: block;
         }
+        .title {
+            text-align: center;
+            margin-top: 20px;
+
+        }
+        .title  {
+            width: 30%;
+            padding: 5px 10px;
+            cursor:text;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            background: linear-gradient(to right, #596ceb, #efdd82);
+            border: 0;
+            outline: none;
+            border-radius: 30px;
+            
+        }
+        
+      
     </style>
     <title>Document</title>
 </head>
 <body>
     <div class="container">
         <div class="form-box">
+        <h1 class="title">Admin</h1>
+       
             <div class="button-box">
                 <div id="btn"></div>
                 <button type="button" class="toggle-btn" onclick="login()">Login</button>
@@ -151,6 +175,7 @@ include_once "connection.php";
             <input type="password" name="password" class="input-field" placeholder="Password" required>
             <button type="submit" name="login" class="submit-btn">Login</button>
          </form>
+        
          <form  id="register" action="register.php" method="post" class="input-group">
      
                 <input  class="input-field" type="text" id="fullname" name="fullname" placeholder="Fullname">
