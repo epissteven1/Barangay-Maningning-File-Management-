@@ -57,6 +57,7 @@ function closeNav() {
 
 // Function to load content
 function loadContent(page) {
+  
   $.ajax({
     url: page,
     type: 'GET',
