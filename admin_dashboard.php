@@ -45,7 +45,7 @@ if (isset($_SESSION['admin_id'])) {
     <div id="myDropdown" class="dropdown-content">
       <a href="#">Wapa</a>
       <a href="#">Wapa</a>
-      <a href="logout.php">Log Out</a>
+      <a href="#" onclick="confirmLogout()">Logout</a>
     </div>
   </div>
 
@@ -135,6 +135,23 @@ if (isset($_SESSION['admin_id'])) {
       }
     }
   }
+  function confirmLogout() {
+            var confirmLogout = confirm("Are you sure you want to logout?");
+            if (confirmLogout) {
+                // Use AJAX to send a request to the server
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "logout.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                     
+                        // Optionally, you can redirect the user to another page
+                        window.location.href = "admin_form.php";
+                    }
+                };
+                xhr.send("logout=true");
+            }
+        }
   </script>
 
   </html>
