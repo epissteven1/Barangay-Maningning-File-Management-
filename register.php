@@ -31,7 +31,7 @@ if (isset($_POST["register"])) {
     if ($stmt) {
         mysqli_stmt_bind_param($stmt, "ssss", $fullname, $username, $email, $hashed_password);
         if (mysqli_stmt_execute($stmt)) {
-            echo "<script>alert('Registration successful. You can now log in.'); window.location.href = 'login.php';</script>";
+            echo "<script>alert('Registration successful. You can now log in.'); window.location.href = 'admin_form.php';</script>";
          
         
             exit();
