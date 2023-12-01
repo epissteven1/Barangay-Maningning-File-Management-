@@ -3,7 +3,7 @@ include('connection.php');
 
 
 // Get the search query
-$query = $_POST['search'];
+$query = isset($_REQUEST['search']) ? $_REQUEST['search'] : '';
 
 // Perform a search query
 $sql = "SELECT  permission_requests.applicant_id, permission_requests.request_id, applicants.fullname, applicants.username, permission_requests.request_date
@@ -23,8 +23,8 @@ if ($result) {
         <td>{$row['username']}</td>
         <td>{$row['request_date']}</td>
         <td>
-         <a href='accept_request.php?action=accept&request_id=" . $row['request_id'] . "'>Accept</a> 
-         <a href='reject_request.php?action=reject&request_id=" . $row['request_id'] . "'>Reject</a>
+         <a href='accept_request.php?action=accept&request_id= {$row['request_id']}'class='btn btn-success'>Accept</a> 
+         <a href='reject_request.php?action=reject&request_id= {$row['request_id']}' class='btn btn-danger'>Reject</a>
          <td>
         <tr>";
         
