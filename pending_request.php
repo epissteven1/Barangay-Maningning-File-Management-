@@ -77,7 +77,6 @@ include 'connection.php';
    
     </style>
   </style>
-    <title>Document</title>
 </head>
 <body>
 <div class="container">
@@ -103,11 +102,10 @@ include 'connection.php';
   </div>
 
 </div>
-<h3 class="card-title">Documents</h3>
 <div class="card-body">
     <table id="example1" class="table table-bordered">
         <thead>
-        
+        <tr>
         <th>Applicant ID</th>
         <th>Fullname</th>
         <th>Username</th>
@@ -136,24 +134,39 @@ include 'connection.php';
 <script src="assets/dist/js/adminlte.min.js?v=3.2.0"></script>
 
 <script>
-   $(document).ready(function () {
-      // Listen for changes in the search input
-      $("#searchInput").on("input", function () {
-         // Get the search query
-         var searchQuery = $(this).val();
+    $(document).ready(function () {
+        // Function to load and display data initially
+        function loadData() {
+            $.ajax({
+                url: "pending_search.php", // Replace with the actual URL for fetching data
+                type: "GET", // Change to GET if that's how your backend is configured
+                success: function (response) {
+                    // Update the table body with the data
+                    $("#tableBody").html(response);
+                }
+            });
+        }
 
-         // Make an Ajax request to search.php with the search query
-         $.ajax({
-            url: "pending_search.php",
-            type: "POST",
-            data: { search: searchQuery },
-            success: function (response) {
-               // Update the table body with the search results
-               $("#tableBody").html(response);
-            }
-         });
-      });
-   });
+        // Call the function on document ready
+        loadData();
+
+        // Listen for changes in the search input
+        $("#searchInput").on("input", function () {
+            // Get the search query
+            var searchQuery = $(this).val();
+
+            // Make an Ajax request to search.php with the search query
+            $.ajax({
+                url: "pending_search.php",
+                type: "POST",
+                data: { search: searchQuery },
+                success: function (response) {
+                    // Update the table body with the search results
+                    $("#tableBody").html(response);
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>
