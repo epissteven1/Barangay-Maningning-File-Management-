@@ -1,173 +1,272 @@
-
-<?php
-include('connection.php');
-
-if (isset($_GET['tableName'])) {
-    $selectedTable = $_GET['tableName'];
-
-    // Modify the SQL query based on the selected table
-    $query = "SELECT * FROM $app_activity_log ORDER BY timestamp DESC";
-    $result = mysqli_query($conn, $query);
-
-    if ($result) {
-        echo '<h2>' . $app_activity_log . '</h2>';
-        echo '<table>
-                <thead>
-                    <tr>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
-                    </tr>
-                </thead>
-                <tbody>';
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo '<tr>
-                    <td>' . $row['timestamp'] . '</td>
-                    <td>' . $row['activity'] . '</td>
-                  </tr>';
-            // Add more columns as needed
-        }
-
-        echo '</tbody></table>';
-        mysqli_free_result($result);
-    }
-
-    mysqli_close($conn);
-}
-?>
-
-
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <!-- Theme style -->
-        <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">   
-        <title>Dropdown Navigation</title>
-        <style>
-            body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-}
-
-.tables-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-table {
-    width: 50%;
-    border-collapse: collapse;
-    margin: 0 10px 20px 0;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-h2 {
-    margin-bottom: 10px;
-}
-
-.dropdown {
-    position: fixed;
-    left: 20%; /* Adjust the left position as needed */
-    top: 40px; /* Adjust the top position as needed */
-    display: inline-block;
-    height: 60vh;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
-
-
-        </style>
-    </head>
-
-    <body>
-        <div class="dropdown">
-            <button class="dropbtn">Select Table</button>
-            <div class="dropdown-content">
-                <a href="#" onclick="navigateToTable('table1')">Applicant Activity Logs</a>
-                <a href="#" onclick="navigateToTable('table2')">My Activity Logs</a>
-                <!-- Add more table options as needed -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>BMFM SYSTEM</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="template/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="template/vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="template/css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="image/Sogod.png" />
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="admindashboard.php">BMFMS</a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="image/Sogod.png" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="ti-view-list"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="ti-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+              <i class="ti-bell mx-0"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+              <a class="dropdown-item">
+                <div class="item-thumbnail">
+                  <div class="item-icon bg-success">
+                    <i class="ti-info-alt mx-0"></i>
+                  </div>
+                </div>
+                <div class="item-content">
+                  <h6 class="font-weight-normal">Application Error</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    Just now
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="item-thumbnail">
+                  <div class="item-icon bg-warning">
+                    <i class="ti-settings mx-0"></i>
+                  </div>
+                </div>
+                <div class="item-content">
+                  <h6 class="font-weight-normal">Settings</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    Private message
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="item-thumbnail">
+                  <div class="item-icon bg-info">
+                    <i class="ti-user mx-0"></i>
+                  </div>
+                </div>
+                <div class="item-content">
+                  <h6 class="font-weight-normal">New user registration</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    2 days ago
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
+              <img src="image/admin.jpg" alt="profile"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item">
+                <i class="ti-settings text-primary"></i>
+                Settings
+              </a>
+              <a class="dropdown-item">
+                <i class="ti-power-off text-primary"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="ti-view-list"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="admin_index.php">
+              <i class="ti-shield menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admindashboard.php">
+              <i class="ti-user menu-icon"></i>
+              <span class="menu-title">Registered Users</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin_app_list.php">
+              <i class="ti-file menu-icon"></i>
+              <span class="menu-title">Applicants</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin_docs.php">
+              <i class="ti-files menu-icon"></i>
+              <span class="menu-title">Documents</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin_activity_log.php">
+              <i class="ti-timer menu-icon"></i>
+              <span class="menu-title">Logs</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="ti-settings menu-icon"></i>
+              <span class="menu-title">Manage Request</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="applicant_request.php">Pending</a></li>
+                <li class="nav-item"> <a class="nav-link" href="authentication_request.php">Authentication</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h4 class="font-weight-bold mb-0">Logs</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="btn-group mb-5">
+                    <button type="button" class="btn btn-secondary btn-rounded btn-fw  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                    <div class="dropdown-menu" style="">
+                      <a class="dropdown-item">Apllicants Logs</a>
+                      <a class="dropdown-item">My Logs</a>
+                    </div>                          
+                  </div>
+                  <div class="table-responsive">
+                    <h4 class="card-title">Appilicant Logs</h4>
+                    <table class="table table-striped  table-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                            Full name
+                          </th>
+                          <th>
+                            Actvity
+                          </th>
+                          <th>
+                            Date
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Herman Beck
+                          </td>
+                          <td>
+                            <div class="progress">
+                              <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <strong class="text-danger">Ayaw e time stamp kol </strong>hahaha
+                          </td>
+                          
+                        </tr>
+                        <tr>
+                          <td>
+                            Messsy Adam
+                          </td>
+                          <td>
+                            <div class="progress">
+                              <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                          <td>
+                            dapat ang date format sa log is nka specify sa date (December 2 2023 Sunday)
+                          </td>
+                         
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
+        
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <a href="#" >bootstrapdash.com </a>2023-2024</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">BMFMS SYSTEM <a href="#" > ADDB </a> projects</span>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
 
-        <div class="tables-container" id="tableContainer">
-         
-        </div>
-        <script src="assets/plugins/jquery/jquery.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-   <script src="assets/dist/js/adminlte.min.js?v=3.2.0"></script>
+  <!-- plugins:js -->
+  <script src="template/vendors/base/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="template/vendors/chart.js/Chart.min.js"></script>
+  <script src="template/js/jquery.cookie.js" type="text/javascript"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="template/js/off-canvas.js"></script>
+  <script src="template/js/hoverable-collapse.js"></script>
+  <script src="template/js/template.js"></script>
+  <script src="template/js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="template/js/dashboard.js"></script>
+  <!-- End custom js for this page-->
+</body>
 
-        <script>
-           function navigateToTable(tableName) {
-    const tablesContainer = document.getElementById('tableContainer');
+</html>
 
-    // Use AJAX to load data from the PHP script associated with the selected table
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            // Update the tablesContainer with the data received from the server
-            tablesContainer.innerHTML = xhr.responseText;
-        }
-    };
-
-    // Specify the correct PHP script based on the selected table
-    let phpScript;
-    if (tableName === 'table1') {
-        phpScript = 'dos_table.php';
-    } else if (tableName === 'table2') {
-        phpScript = 'dos_table2.php';
-    }
-
-    // Open the request with the appropriate PHP script
-    xhr.open('GET', phpScript + '?tableName=' + tableName, true);
-    xhr.send();
-}
-
-
-        </script>
-    </body>
-
-    </html>
