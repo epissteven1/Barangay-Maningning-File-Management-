@@ -1,117 +1,20 @@
-<?php include 'connection.php'; 
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="assets/plugins/fontawesome-free/css">
- <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
-<link rel="stylesheet" href="styles/admin_index.css">
-<style>
-        body {
-            margin: 0;
-            font-family: "Lato", sans-serif;
-        }
-
-        #content-container {
-          
-            #content-container {
-    height: auto; /* or set a specific height in pixels or another unit */
-    max-height: 100vh; /* to ensure it doesn't exceed the viewport height */
-    overflow-y: auto;
-}
-
-        }
-
-        #main {
-            transition: margin-left .5s;
-        }
-
-        #mySidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #e8e4c9;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-            cursor: pointer;
-        }
-
-        #mySidebar a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 20px;
-            color: black;
-            display: block;
-            transition: 0.3s;
-        }
-
-        #mySidebar a:hover {
-            color: blue;
-            
-        }
-
-        #mySidebar .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        #main .openbtn {
-            font-size: 20px;
-            cursor: pointer;
-            background-color: #111;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-        }
-        .submenu {
-    display: none;
-
-
-}
-.openbtn {
-      position: fixed;
-      top: 15px; /* Adjust the top position as needed */
-      left: 30px; /* Adjust the left position as needed */
-      z-index: 2; /* Ensure the button is above other elements */
-    }
-
-.submenu a {
-    padding: 8px 16px;
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    display: block;
-}
-
-
-#mySidebar .submenu-indicator {
-    font-size: 15px;
-    margin-left: 10px;
-}
-
- .submenu-indicator.rotate {
-    transform: rotate(90deg);
-    transition: transform 0.3s ease-in-out;
-}
-#mySidebar .submenu a:hover {
-
-    background-color: rgb(193, 201, 174);
-}
-.submenu a {
-    background-color: bisque;
-}
-
-    </style>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>BMFM SYSTEM</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="template/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="template/vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="template/css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="image/Sogod.png" />
 </head>
 <body>
   <div class="container-scroller">
@@ -219,9 +122,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admindashboard.php">
+            <a class="nav-link" href="">
               <i class="ti-user menu-icon"></i>
-              <span class="menu-title">Registered Users</span>
+              <span class="menu-title">Total Population</span>
             </a>
           </li>
           <li class="nav-item">
@@ -406,119 +309,37 @@
             </div>
           </div>
         </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <a href="#" >bootstrapdash.com </a>2023-2024</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">BMFMS SYSTEM <a href="#" > ADDB </a> projects</span>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
     </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
 
-    <!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Include your script with initializeDashboardJS -->
-<script src="../File Management/scripts/initializeDashboardJS.js"></script>
-
-<!-- Include your script with initializeButtons -->
-<script src="../File Management/scripts/initializeButtonsScript.js"></script>
-    <script>
-      function toggleNav() {
-      var sidebar = document.getElementById("mySidebar");
-      var main = document.getElementById("main");
-      var toggleBtn = document.getElementsByClassName("openbtn")[0];
-      var submenu = document.getElementById("submenu");
-  
-      // Toggle sidebar and main content
-      if (sidebar.style.width === "250px") {
-          sidebar.style.width = "0";
-          main.style.marginLeft = "0";
-          toggleBtn.style.display = "block"; // Show the toggle button when sidebar is closed
-      } else {
-          sidebar.style.width = "250px";
-          main.style.marginLeft = "250px";
-          toggleBtn.style.display = "none"; // Hide the toggle button when sidebar is open
-      }
-  }
-  function toggleSubMenu() {
-    var submenu = document.getElementById("submenu");
-    var indicator = document.getElementById("submenu-indicator");
-
-    if (submenu.style.display === "none" || submenu.style.display === "") {
-        submenu.style.display = "block";
-        setTimeout(function () {
-            indicator.classList.add("rotate");
-        }, 10); // Add a small delay (e.g., 10 milliseconds)
-    } else {
-        submenu.style.display = "none";
-        indicator.classList.remove("rotate");
-    }
-}
-
-
-  function closeNav() {
-      var toggleBtn = document.getElementsByClassName("openbtn")[0];
-      var sidebar = document.getElementById("mySidebar");
-      var main = document.getElementById("main");
-  
-      document.getElementById("mySidebar").style.width = "0";
-      document.getElementById("main").style.marginLeft = "0";
-      toggleBtn.style.display = "block"; // Show the toggle button when sidebar is closed
-  }
-  
-  function loadContent(page) {
-    var toggleBtn = document.getElementsByClassName("openbtn")[0];
-
-                $.ajax({
-                url: page,
-                type: 'GET',
-                success: function (data) {
-                    $('#content-container').html(data);
-                    $('#content-container').css('height', '100%');
-                    $('#content-container').css('overflow-y', 'auto');
-
-                    // Set scroll position to the top
-                    $('#content-container').scrollTop(0);
-
-                    // Reinitialize JavaScript for the specific content
-                    if (page === 'dashboard.php') {
-                        console.log('Initializing dashboard functionality...');
-                        initializeDashboardJS();
-                    }
-
-                    // Show toggle button after content is loaded, and if the sidebar is closed
-                    var sidebar = document.getElementById("mySidebar");
-                    var toggleBtn = document.getElementById("toggleBtn");
-
-                    if (sidebar.style.width === "0") {
-                        toggleBtn.style.display = "block";
-                    } else {
-                        toggleBtn.style.display = "none";
-                    }
-
-                    // Reapply any necessary functionality for buttons or interactive elements
-                    initializeButtons();
-
-                    // Check if a specific condition is met (e.g., successful profile picture upload)
-                    // and reload the page if needed
-                    if (shouldReloadPage()) {
-                        window.location.reload();
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('AJAX Error:', status, error);
-                },
-                complete: function () {
-                    // Ensure that all scripts are loaded and executed before considering the content fully loaded
-                    $(document).trigger("contentloaded");
-                }
-            });
-
-            function shouldReloadPage() {
-                // You can implement your condition here, for example, check if a specific form is submitted
-                // and return true if a reload is needed, otherwise return false.
-                // Example: return $("#profilePictureForm").is(":submitted");
-                return false;
-            }
-
-            }
-
-
-
-</script>
+  <!-- plugins:js -->
+  <script src="template/vendors/base/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="template/vendors/chart.js/Chart.min.js"></script>
+  <script src="template/js/jquery.cookie.js" type="text/javascript"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="template/js/off-canvas.js"></script>
+  <script src="template/js/hoverable-collapse.js"></script>
+  <script src="template/js/template.js"></script>
+  <script src="template/js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="template/js/dashboard.js"></script>
+  <!-- End custom js for this page-->
 </body>
+
 </html>
