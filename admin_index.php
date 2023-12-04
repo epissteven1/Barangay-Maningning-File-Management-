@@ -1,114 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="assets/plugins/fontawesome-free/css">
- <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
-<link rel="stylesheet" href="styles/admin_index.css">
-<style>
-        body {
-            margin: 0;
-            font-family: "Lato", sans-serif;
-        }
-
-        #content-container {
-          
-            #content-container {
-    height: auto; /* or set a specific height in pixels or another unit */
-    max-height: 100vh; /* to ensure it doesn't exceed the viewport height */
-    overflow-y: auto;
-}
-
-        }
-
-        #main {
-            transition: margin-left .5s;
-        }
-
-        #mySidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #e8e4c9;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-            cursor: pointer;
-        }
-
-        #mySidebar a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 20px;
-            color: black;
-            display: block;
-            transition: 0.3s;
-        }
-
-        #mySidebar a:hover {
-            color: blue;
-            
-        }
-
-        #mySidebar .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        #main .openbtn {
-            font-size: 20px;
-            cursor: pointer;
-            background-color: #111;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-        }
-        .submenu {
-    display: none;
-
-
-}
-.openbtn {
-      position: fixed;
-      top: 15px; /* Adjust the top position as needed */
-      left: 30px; /* Adjust the left position as needed */
-      z-index: 2; /* Ensure the button is above other elements */
-    }
-
-.submenu a {
-    padding: 8px 16px;
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    display: block;
-}
-
-
-#mySidebar .submenu-indicator {
-    font-size: 15px;
-    margin-left: 10px;
-}
-
- .submenu-indicator.rotate {
-    transform: rotate(90deg);
-    transition: transform 0.3s ease-in-out;
-}
-#mySidebar .submenu a:hover {
-
-    background-color: rgb(193, 201, 174);
-}
-.submenu a {
-    background-color: bisque;
-}
-
-    </style>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>BMFM SYSTEM</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="template/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="template/vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="template/css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="image/Sogod.png" />
 </head>
 <body>
   <div class="container-scroller">
@@ -216,9 +122,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admindashboard.php">
+            <a class="nav-link" href="">
               <i class="ti-user menu-icon"></i>
-              <span class="menu-title">Registered Users</span>
+              <span class="menu-title">Total Population</span>
             </a>
           </li>
           <li class="nav-item">
