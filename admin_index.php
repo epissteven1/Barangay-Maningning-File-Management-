@@ -68,15 +68,15 @@
         #main .openbtn {
             font-size: 20px;
             cursor: pointer;
-            background-color: #111;
-            color: white;
+            background-color: #e8e4c9 !important;
+            color: rgb(31, 3, 3) !important;
             padding: 10px 15px;
             border: none;
-        }
+                }
         .submenu {
     display: none;
 
-
+            
 }
 .openbtn {
       position: fixed;

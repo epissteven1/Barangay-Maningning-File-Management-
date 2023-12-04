@@ -43,6 +43,8 @@ if (isset($_GET['tableName'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <!-- Theme style -->
+        <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">   
         <title>Dropdown Navigation</title>
         <style>
             body {
@@ -134,6 +136,9 @@ h2 {
         <div class="tables-container" id="tableContainer">
          
         </div>
+        <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="assets/dist/js/adminlte.min.js?v=3.2.0"></script>
 
         <script>
            function navigateToTable(tableName) {

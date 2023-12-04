@@ -1,6 +1,4 @@
-<?php
-include 'connection.php';
-?>
+<?php  include 'idk.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +23,7 @@ include 'connection.php';
             background-color: #f9f9f9;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-left: 20%;
             
            }   
 
@@ -111,7 +110,6 @@ include 'connection.php';
    
         <th>Applicant ID</th>
         <th>Message</th>
-        <th>Status</th>
         <th>Action</th>
     
         </tr>

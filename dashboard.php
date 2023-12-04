@@ -1,23 +1,6 @@
-<?php include_once 'connection.php';
-
-session_start();
- 
-
-if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
-
-
-    $query = "SELECT * FROM applicants WHERE applicant_id = $id";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_assoc($result);
-} else {
-    
-    header("Location: index.php");
-    exit();
-}
+<?php include 'idk.php';
+include 'document_counts.php'; 
 ?>
-    
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,23 +14,12 @@ if (isset($_SESSION['id'])) {
 </head>
 
 <body>
-<!-- <header>
-        <h1>Welcome to Barangay File Management System</h1>
-    </header> -->
+
+
   <div class="app-container">
     <div class="app-header">
       <div class="app-header-left">
         <p class="app-name">Dashboard</p>
-        <div class="search-wrapper">
-          <input class="search-input" type="text" placeholder="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-search"
-            viewBox="0 0 24 24">
-            <defs></defs>
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="M21 21l-4.35-4.35"></path>
-          </svg>
-        </div>
       </div>
       <div class="app-header-right">
         <button class="mode-switch" title="Switch Theme">
@@ -73,6 +45,8 @@ if (isset($_SESSION['id'])) {
             <path d="M13.73 21a2 2 0 0 1-3.46 0" />
           </svg>
         </button>
+
+        
                           <?php
                       $sql = "SELECT * FROM applicants WHERE applicant_id = '$id'";
                           $result = mysqli_query($conn, $sql);
@@ -84,7 +58,8 @@ if (isset($_SESSION['id'])) {
         </button>
         </div>
       </div>
-  
+     
+      
       <div class="projects-section">
         <div class="projects-section-header">
           <p> Barangay "Maningning"  </p>
@@ -202,40 +177,13 @@ echo date("Y-m-d ");
                 </div>
               </div>
               <div class="project-box-content-header">
-              <p class="box-content-header">Document</p>
-                <p class="box-content-subheader">Pending Documents</p>
-                <p>480</p>
+              <p class="box-content-header">TotalDocument</p>
+              <p><?php echo getTotalDocumentCount($conn); ?></p>
       
-                <p class="box-content-subheader">Completed Documents</p>
-                <p>480</p>
+             
               </div>
-              <div class="box-progress-wrapper">
-                <p class="box-progress-header">Progress</p>
-                <div class="box-progress-bar">
-                  <span class="box-progress" style="width: 50%; background-color:  #34c471"></span>
-                </div>
-                <p class="box-progress-percentage">50%</p>
-              </div>
-              <div class="project-box-footer">
-                <div class="participants">
-                  <img
-                    src="https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1215&q=80"
-                    alt="participant">
-                  <img
-                    src="https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2555&q=80"
-                    alt="participant">
-                  <button class="add-participant" style="color: #4f3ff0;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-                      class="feather feather-plus">
-                      <path d="M12 5v14M5 12h14" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="days-left" style="color: #4f3ff0;">
-                  2 Days Left
-                </div>
-              </div>
+
+              
             </div>
           </div>
           <div class="project-box-wrapper">
@@ -459,7 +407,7 @@ echo date("Y-m-d ");
          
 
         <!-- Include your script with initializeDashboardJS -->
-<script src="../File Management/scripts/initializeDashboardJS.js"></script>
+<script src="../Barangay-Maningning-File-Management-/scripts/initializeDashboardJS.js"></script>
 
   <!--! Adding JavaScript -->
   <script src="script.js"></script>

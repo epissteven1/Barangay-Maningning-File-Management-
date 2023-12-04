@@ -1,4 +1,10 @@
-@charset "UTF-8";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
 * {
     -webkit-box-sizing: border-box;
@@ -79,6 +85,9 @@ a {
 .app-container {
     position: relative;
     top: 0px;
+    left: 50px;
+    /* Adjust the value as needed */
+    width: calc(100% - 70px);
     /* Adjust the width to fill the remaining space */
     background-color: var(--projects-section);
     border-radius: 32px;
@@ -88,7 +97,7 @@ a {
     flex-direction: column;
     height: 100%;
     overflow-y: auto; /* Add a vertical scrollbar if content exceeds the height */
-     margin-right: 20px;
+  
 }
     
 
@@ -727,12 +736,10 @@ a {
 .project-box-content-header {
     text-align: center;
     margin-bottom: 16px;
-
 }
 
 .project-box-content-header p {
     margin: 0;
-
 }
 
 .project-box-wrapper {
@@ -773,16 +780,11 @@ a {
 }
 
 .box-content-header {
-    font-size: 20px; 
+    font-size: 16px;
     line-height: 24px;
     font-weight: 700;
     opacity: 0.7;
 }
-.project-box-content-header p:last-child {
-    font-size: 24px; /* Adjust the font size as needed */
-    font-weight: bold;
-    margin-top: 5px; /* Add margin for separation from the header */
-} 
 
 .box-content-subheader {
     font-size: 14px;
@@ -1222,3 +1224,16 @@ header {
     flex-wrap: wrap;
  
   }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+        <!-- Include your script with initializeDashboardJS -->
+        <script src="../Barangay-Maningning-File-Management-/scripts/initializeDashboardJS.js"></script>
+
+<!--! Adding JavaScript -->
+<script src="script.js"></script>
+
+</html>

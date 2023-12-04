@@ -146,7 +146,7 @@ if (isset($_SESSION['admin_id'])) {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                      
                         // Optionally, you can redirect the user to another page
-                        window.location.href = "admin_form.php";
+                        window.location.href = "index.php";
                     }
                 };
                 xhr.send("logout=true");

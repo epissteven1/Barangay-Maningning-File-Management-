@@ -10,10 +10,10 @@ if (isset($_POST['submit'])) {
 
     // Assuming you have a table named 'applicants' and the user is identified by some unique field (e.g., 'user_id')
     session_start(); // Assuming you are using sessions to store user information
-    $userId = $_SESSION['id'];
+    $id = $_SESSION['id'];
 
     // Check if the current password matches the one stored in the database
-    $checkPasswordQuery = "SELECT * FROM applicants WHERE applicant_id = '$userId'";
+    $checkPasswordQuery = "SELECT * FROM applicants WHERE applicant_id = '$id'";
     $result = mysqli_query($conn, $checkPasswordQuery);
 
     if ($result) {
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
             // Current password is correct, update the password
             $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
-            $updatePasswordQuery = "UPDATE applicants SET password = '$hashedPassword' WHERE applicant_id = '$userId'";
+            $updatePasswordQuery = "UPDATE applicants SET password = '$hashedPassword' WHERE applicant_id = '$id'";
             $updateResult = mysqli_query($conn, $updatePasswordQuery);
 
             if ($updateResult) {

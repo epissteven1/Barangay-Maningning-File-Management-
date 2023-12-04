@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+
     <title>Document</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
 
                     <div class="card-tools">
                         <form method="get">
-                            <div class="input-group input-group-sm" style="width: 150px;">
+                            <div class="input-group input-group-sm" style="width: 200px;">
                                 <input type="text" name="table_search" class="form-control float-right" placeholder="Search" value="<?php echo isset($_GET['table_search']) ? htmlspecialchars($_GET['table_search']) : ''; ?>">
 
                                 <div class="input-group-append">
@@ -30,7 +31,7 @@
                     </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
+                <div class="card-body table-responsive ">
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>

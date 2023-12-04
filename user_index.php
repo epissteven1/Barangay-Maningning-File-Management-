@@ -101,13 +101,12 @@
         <a href="#" class="closebtn" onclick="closeNav()">×</a>
         <img id="sidebar-logo" src="image/maningning.jpg" alt="Dashboard logo,">
         <a href="#" onclick="loadContent('dashboard.php')">Home</a>
-        <a href="#" onclick="loadContent('applicant_profile.php')">Profile</a>
+        <a href="#" onclick="loadContent('profile_card.php')">Profile</a>
         <a href="#" onclick="loadContent('document_list.php')">Document</a>      
         <a href="#" onclick="loadContent('applicant_request.php')">Request Documents</a>  
-        <a href="#" onclick="loadContent('applicant_activity_log.php')">History</a>
+        <a href="#" onclick="loadContent('applicant_activity_log.php')">History</a>  
         <a class="menu-start" href="#" onclick="toggleSubMenu()">Settings</a>
         <div id="submenu" class="submenu">
-        <a href="#" onclick="openChangePasswordModal()">Change Password</a>
         <a href="#" onclick="confirmLogout()">Logout</a>
         <!-- Add more submenu items as needed -->
 </div>
@@ -117,20 +116,15 @@
        
         <div id="content-container">
             <?php include 'dashboard.php'; ?>
+   
             <!-- Include your content here -->
         </div>
-          <?php include 'change_password_form.php'; ?>
         <button class="openbtn" onclick="toggleNav()">☰</button>
     </div>
-    
-
-
-
-<!-- Include your script with initializeDashboardJS -->
-<script src="../File Management/scripts/initializeDashboardJS.js"></script>
-
-<!-- Include your script with initializeButtons -->
-<script src="../File Management/scripts/initializeButtonsScript.js"></script>
+    <!-- jQuery -->
+<script src="assets/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
 function confirmLogout() {
             var confirmLogout = confirm("Are you sure you want to logout?");
@@ -143,7 +137,7 @@ function confirmLogout() {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                      
                         // Optionally, you can redirect the user to another page
-                        window.location.href = "applicant_form.php";
+                        window.location.href = "index.php";
                     }
                 };
                 xhr.send("logout=true");

@@ -36,7 +36,7 @@ if (isset($_POST['applicantlogin'])) {
 				echo '<script>alert("Login Successfully!")</script>';
                  // Log the activity
                  logActivity($conn, "Successful login for username: $username");
-				header("Location: user_index.php");
+				header("Location: dashboard	.php");
 				exit();
 			} else {
 				echo '<script>alert("Invalid username or password")</script>';

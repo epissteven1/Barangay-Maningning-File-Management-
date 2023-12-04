@@ -25,7 +25,9 @@ if (isset($_POST['submit'])) {
 
     if (!in_array($fileType, $allowedExtensions)) {
         echo "<script>alert('Sorry, only PDF, DOC, DOCX, and TXT files are allowed.');</script>";
+        header("Location: admin_docs.php");
         $uploadOk = 0;
+        exit();
     }
 
     // Check if the file already exists in the database

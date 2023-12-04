@@ -1,3 +1,5 @@
+<?php include 'idk.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +25,8 @@
             background-color: #f9f9f9;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-left: 19%;
+            margin-top: 20px;
             
            }   
 

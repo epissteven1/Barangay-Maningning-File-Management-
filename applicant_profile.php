@@ -1,5 +1,5 @@
 <?php
-include "connection.php";
+include 'includes/session.php';
 
 function logActivity($conn, $logMessage) {
     $timestamp = date("Y-m-d H:i:s");
@@ -15,18 +15,6 @@ function logActivity($conn, $logMessage) {
     }
 }
 
-session_start();
-
-if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
-
-    $query = "SELECT * FROM applicants WHERE applicant_id = $id";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_assoc($result);
-} else {
-    header("Location: index.php");
-    exit();
-}
 
 // Handle the form submission to update the profile picture
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

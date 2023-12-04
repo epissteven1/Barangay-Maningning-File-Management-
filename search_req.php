@@ -25,7 +25,6 @@ if ($result) {
         echo "<tr>
                 <td>{$row['applicant_id']}</td>
                 <td>{$row['message']}</td>
-                <td>{$row['status']}</td>
                 <td>";
 
         if ($row['status'] === 'Accepted') {
