@@ -1,6 +1,7 @@
 <?php
 // Include your database connection file
-include 'connection.php';
+include 'connection.php'; 
+
 
 // Get the search query from Ajax
 $searchQuery = $_POST['search'];
@@ -15,7 +16,7 @@ if ($result) {
             <td>{$row['file_uploads']}</td>
             <td>{$row['upload_date']}</td>
             <td>
-               <a href='download_file.php?action=download&file_id={$row['file_id']}'class='btn btn-success'>Download</a>
+               <a href='download_file.php?action=download&file_id={$row['file_id']}'onclick='openDownloadFileModal()' class='btn btn-success'>Download</a>
                <a href='read.php?action=view&file_id={$row['file_id']}'class='btn btn-primary'>Read</a>
             </td>
          </tr>";
@@ -30,4 +31,10 @@ if ($result) {
 }
 ?>
 
+<script>
+   function openDownloadFileModal() {
+    $('#modal-default').modal('show');
+}
 
+
+</script>
