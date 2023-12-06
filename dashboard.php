@@ -207,8 +207,8 @@ echo date("Y-m-d ");
               </div>
               <div class="project-box-content-header">
                 
-              <div
-            <h2></h2>
+         
+            
             <div class="status">
                 <div>
                 

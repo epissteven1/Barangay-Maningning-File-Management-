@@ -1,21 +1,19 @@
-
+<?php
+include 'connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
-  
+    
+    <title>Document</title>
 </head>
 <body>
-
 <div class="container-scroller">
-    <?php include 'includes/applicant_sidebar.php'; ?>
-   <!-- partial -->
-   <div class="main-panel">
+   <?php include 'includes/admin_sidebar.php'; ?>
+      <!-- partial -->
+      <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
             <div class="col-md-12 grid-margin">
@@ -25,8 +23,9 @@
                 </div>
               </div>
             </div>
-  <!-- kuwag ug search -->
-  </div>
+
+            <!-- kuwag ug search -->
+            </div>
             <ul class="navbar-nav mr-lg-2">
           <li class="nav-item nav-search d-none d-lg-block">
             <div class="input-group">
@@ -41,33 +40,32 @@
             </div>
           </li>
         </ul>
-        
             <div class="col-lg-12 stretch-card">
-            <div class="card">
+              <div class="card">
               <div class="card-body">
-                  <h4 class="card-title">Documents</h4>
+                  <h4 class="card-title">Pending Request</h4>
                   <div class="table-responsive">
                     <table class="table table-striped">
-                        <thead>
-                        <tr>
-                    <th>Name</th>
-                    <th>Date Uploaded</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <!-- Dynamic search results will be inserted here -->
-            
-                </tbody>
-            </table>
-            </div>
+                            <thead>
+                            <tr>
+                            <th>Applicant ID</th>
+                            <th>Fullname</th>
+                            <th>Username</th>
+                            <th>Request Date</th>
+                            <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <!-- Dynamic search results will be inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-
-
+  
   <!-- plugins:js -->
   <script src="template/vendors/base/vendor.bundle.base.js"></script>
   <!-- endinject -->
@@ -85,16 +83,13 @@
   <script src="template/js/dashboard.js"></script>
   <!-- End custom js for this page-->
   <script src="template/js/file-upload.js"></script>
-  <script src="assets/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="js/custom.js"></script>
-<script>
-   $(document).ready(function () {
+
+  <script>
+    $(document).ready(function () {
         // Function to load and display data initially
         function loadData() {
             $.ajax({
-                url: "search.php", // Replace with the actual URL for fetching data
+                url: "authentication_search.php", // Replace with the actual URL for fetching data
                 type: "GET", // Change to GET if that's how your backend is configured
                 success: function (response) {
                     // Update the table body with the data
@@ -113,7 +108,7 @@
 
             // Make an Ajax request to search.php with the search query
             $.ajax({
-                url: "search.php",
+                url: "authentication_search.php",
                 type: "POST",
                 data: { search: searchQuery },
                 success: function (response) {
@@ -123,9 +118,6 @@
             });
         });
     });
-
-
 </script>
-
 </body>
 </html>

@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $result = mysqli_query($conn, $sql);
       
             // Insert a message into the database for the pending request
-            $message = "Your permission request for file <?php echo ['file_uploads']; ?> is pending review.  We appreciate your patience.";
+            $message = "Your permission request for file {$file_id} is pending review.  We appreciate your patience.";
             $insertMessageQuery = "INSERT INTO permission_messages (applicant_id, message) VALUES (?, ?)";
             $stmtMessage = mysqli_prepare($conn, $insertMessageQuery);
             mysqli_stmt_bind_param($stmtMessage, "is", $applicant_id, $message);

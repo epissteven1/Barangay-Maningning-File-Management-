@@ -9,130 +9,83 @@ include 'connection.php';
     <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
-  <style>
-    body {
-            font-family: Arial, sans-serif;
-          
-           
-                }
-           .container {
-            width: 1000px;
-            height: 1000px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            
-           }   
 
-        h1 {
-            text-align: center;
-        }
-
-        table {
-            width: 90%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            background-color: blanchedalmond !important;
-            font-family: cambria!important;
-            font-size: 12pt!important;
-            margin-left: 20px;
-       
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px!important;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        a {
-            text-decoration: none;
-            color: #3498db;
-            font-weight: bold;
-        }
-
-        a:hover {
-            color: #1e87db;
-        }        
-
-    .input-group {
-        padding: 20px;
-        display: flex;
-        justify-content: end;
-    } 
-
-    
-   
-    </style>
-  </style>
 </head>
 <body>
-<div class="container">
-<div class="card">
-<div class="card-header">
-<section class="content"> 
-    <div class="row">
-            <div class="container-fluid">
-                <div class="col-md-7 offset-md-4">
-                        <div class="input-group">
-                            <input type="search" id="searchInput"  class="form-control form-control-lg" placeholder="Type your keywords here">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-lg btn-default">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
+<div class="container-scroller">
+   <?php include 'includes/admin_sidebar.php'; ?>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h4 class="font-weight-bold mb-0"> Applicant</h4>
+                </div>
+              </div>
+            </div>
+
+            <!-- kuwag ug search -->
+            </div>
+            <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="ti-search"></i>
+                </span>
+              </div>
+              <input type="search" id="searchInput" class="form-control" placeholder="Search now" aria-label="search" aria-describedby="search">
+            
+            </div>
+          </li>
+        </ul>
+            <div class="col-lg-12 stretch-card">
+              <div class="card">
+              <div class="card-body">
+                  <h4 class="card-title">Pending Request</h4>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                        <th>APPLICANT ID</th>
+                        <th>FullNAME</th>
+                        <th>NAME DOCUMENT</th>
+                        <th>REQUEST DATE</th>
+                        <th>ACTION</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- Dynamic search results will be inserted here -->
+                            
+                                </tbody>
+                            </table>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-  </div>
 
-</div>
-<div class="card-body">
-    <table id="example1" class="table table-bordered">
-        <thead>
-        <tr>
-        <th>Applicant ID</th>
-        <th>Fullname</th>
-        <th>Username</th>
-        <th>Request Date</th>
-        <th>Action</th>
-        </tr>
-        </thead>
-        <tbody id="tableBody">
-            <!-- Dynamic search results will be inserted here -->
-            
-        </tbody>
-    </table>
-</div>
-</tfoot>
-</table>
-</div>
-</section>
-</div>
+                    
 
 
-<script src="assets/plugins/jquery/jquery.min.js"></script>
-
-<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
-<script src="assets/dist/js/adminlte.min.js?v=3.2.0"></script>
-
+  <!-- plugins:js -->
+  <script src="template/vendors/base/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="template/vendors/chart.js/Chart.min.js"></script>
+  <script src="template/js/jquery.cookie.js" type="text/javascript"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="template/js/off-canvas.js"></script>
+  <script src="template/js/hoverable-collapse.js"></script>
+  <script src="template/js/template.js"></script>
+  <script src="template/js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="template/js/dashboard.js"></script>
+  <!-- End custom js for this page-->
+  <script src="template/js/file-upload.js"></script>
 <script>
     $(document).ready(function () {
         // Function to load and display data initially

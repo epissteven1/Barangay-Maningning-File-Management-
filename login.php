@@ -44,10 +44,13 @@ if (isset($_POST["login"])) {
             } else {
                 logActivity($conn, "Failed login attempt for username: $username (Wrong Password)");
                 echo '<script>alert("Wrong Password!")</script>';
+                header('Location: index.php');
+                exit();
             }
         } else {
             logActivity($conn, "Failed login attempt for username: $username (Username not found)");
             echo '<script>alert("Email or Username Not Found!")</script>';
+            header('Location:index.php');
         }
     } else {
         echo '<script>alert("Database Error!")</script>';

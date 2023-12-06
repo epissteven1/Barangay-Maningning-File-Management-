@@ -1,4 +1,4 @@
-<?php include 'includes/session.php';
+<?php include 'includes/admin_session.php';
 
 ?>
 <!DOCTYPE html>
@@ -27,46 +27,30 @@
               </button>
             </div>
             <div class="modal-bod">
-                <form action="profile_card.php" method="post" id="profileForm" enctype="multipart/form-data">
+                <form action="admin_profile_card.php" method="post" id="profileForm" enctype="multipart/form-data">
             
                 <div class="card imgholder">
               <label for="imgInput" class="upload">
-            <input type="file" name="applicant_profile" id="imgInput">
+            <input type="file" name="admin_profile_pic" id="imgInput">
             <i class="bi bi-plus-circle-dotted"></i>
                   </label>
-      <img src="<?php echo $row['applicant_profile']; ?>" alt="" width="200" height="200" class="img">
+      <img src="<?php echo $row['admin_profile_pic']; ?>" alt="" width="200" height="200" class="img">
                         </div>
                       
          <div class="inputField">   
          <div class="form-group">
                 <label for="firstname">firstname:</label>
-                <input class="form-control" type="text" name="firstname"  value="<?php echo ($row['fullname']); ?>" >
+                <input class="form-control" type="text" name="firstname"  value="<?php echo ($row['fullname']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="username">UserName</label>
-                <input  class="form-control" type="text" name="username" value="<?php echo ($row['username']); ?>" >
+                <input  class="form-control" type="text" name="username" value="<?php echo ($row['username']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input class="form-control" type="email" name="email" value="<?php echo ($row['email']); ?>" >
+                <input class="form-control" type="email" name="email" value="<?php echo ($row['email']); ?>" required>
             </div>
-            <div class="form-group">
-                <label for="civil_status">Civil Status:</label>
-                <input class="form-control" type="text" name="civil_status" value="<?php echo ($row['civilstatus']); ?>">
-            </div>
-            <div class="form-group">
-                <label for="contact">Contact:</label>
-                <input class="form-control" type="text" minlength="11" maxlength="11" name="contact" value="<?php echo ($row['contact']); ?>">
-            </div>
-            <div class="form-group">
-                <label for="gender">Gender:</label>
-                <input class="form-control" type="text" name="gender" value="<?php echo ($row['gender']); ?>" >
-            </div>
-            <div class="form-group">
-                <label for="gender">Age:</label>
-                <input class="form-control" type="number" name="age" value="<?php echo ($row['age']); ?>" >
-            </div>
-
+          
 
 
 
@@ -106,7 +90,7 @@ $(document).ready(function () {
             // Perform AJAX submission
             $.ajax({
                 type: "POST",
-                url: "profile_card.php", // Replace with your actual script URL
+                url: "admin_profile_card.php", // Replace with your actual script URL
                 data: new FormData(this),
                 contentType: false,
                 cache: false,

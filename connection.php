@@ -7,11 +7,9 @@ $database = "file_management";  // Replace with your database name
 // Create a connection to the database
 $conn = new mysqli($server, $username, $password, $database);
 
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
-
 // Set the character set to UTF-8 (if needed)
 $conn->set_charset("utf8");
 

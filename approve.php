@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
     $stmt->bind_param("si", $status, $id);
 
     if ($stmt->execute()) {
-        header("Location: admin_panel.php");
+        header("Location: authentication_request.php");
     } else {
         echo "Error: " . $stmt->error;
     }

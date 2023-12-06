@@ -1,8 +1,7 @@
 <?php  
-include 'change_password_form.php';
-include 'modal/modal.php';
-include  'modal/edit_modal.php';
-
+include 'modal/admin_view_modal.php';
+include  'modal/admin_edit_modal.php';
+include 'includes/admin_session.php';
 
 
 function logActivity($conn, $logMessage) {
@@ -134,27 +133,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['id'])) {
   
         <title>Document</title>
 </head>
-    <body> 
-    <div class="container-scroller">
-        <?php include 'includes/applicant_sidebar.php'; ?>
-
-
-
-        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-lg" style="width: 100%; position: fixed; top: 0; left: 10px; z-index: 1000;">
-  <!-- Your content here -->
-</div>
-
-<div class="content-fluid" style="margin-left: 20px; width: 80%; height: 90vh;"> <!-- Adjust padding-top to match the header's height -->
- 
-            <div class="row">
-                <div class="col-lg-12 mt-5 pt-5" >
+    <body class="bg-light">
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-lg">
+        <div class="container-fluid position-relative ml-5 ">
+            <div class="row d-flex justify-content-end">
+                <div class="col-md-9 mt-5 pt-5" >
                     <div class="row z-depth-3">
-                        <div class="col-md-3  bg-info">
+                        <div class="col-md-3.5 mr-2 bg-info">
                             <div class="card-block text-center text-white">
-                            <img class="mask ml-3 mr-3 mt-4" style="background-color: hsla(0, 0%, 0%, 0.6); border-radius: 50%; width: 150px; height: 150px; object-fit: cover;" src="<?php echo $row['applicant_profile']; ?>" alt="A profile picture">
+                            <img class="mask ml-3 mr-3 mt-4" style="background-color: hsla(0, 0%, 0%, 0.6); border-radius: 50%; width: 150px; height: 150px; object-fit: cover;" src="<?php echo $row['admin_profile_pic']; ?>" alt="A profile picture">
 
                                 <h2 class="font-weight-bold mt-2 pt-5"><?php echo $row['fullname']; ?></h2>
-                                <p>Applicant</p>
+                                <h4><p>Admin</p></h4>   
      
                   
                             
@@ -179,37 +169,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['id'])) {
                                     <h6 class="text-muted"><?php echo $row['email']; ?></h6>
                               
                                 </div>
+                            
+
                                 <div class="col-sm-6">
-                                    <p class="font-weight-bold">Civil Status:</p>
-                                    <h6 class="text-muted"><?php echo $row['civilstatus']; ?></h6>
-                              
-                                </div>
+    <p class="font-weight-bold">Password:</p>
+    <div class="input-group">
+        <h6 class="text-muted" id="displayedPassword" data-type="password">********</h6>
+        <div class="input-group-append">
+            <span class="input-group-text">
+                <i class="bi bi-eye" id="toggleDisplayedPassword"></i>
+            </span>
+        </div>
+    </div>
+</div>
+
+
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <p class="font-weight-bold">Contact:</p>
-                                <h6 class="text-muted"><?php echo $row['contact']; ?></h6>
-                                
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="font-weight-bold">Gender:</p>
-                                    <h6 class="text-muted"><?php echo $row['gender']; ?></h6>
-                              
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="font-weight-bold">Age:</p>
-                                    <h6 class="text-muted"><?php echo $row['age']; ?></h6>
-                              
-                                </div>
-                                                    <div class="col-sm-6">
-                        <p class="font-weight-bold">Password:</p>
-                        <div class="input-group">
-                            <h6 class="text-muted" id="displayedPassword" data-type="password">********</h6>
-                        </div>
-                    </div>
-
-
-                                                </div>
                         
                             <hr class="bg-primary">
                                    <ul class="list-unstyled d-flex justify-content-center mt-4 mr-5">
@@ -229,24 +204,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['id'])) {
     </div>
     
     
-    
 </body>
-   <!-- plugins:js -->
-   <script src="template/vendors/base/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <script src="template/vendors/chart.js/Chart.min.js"></script>
-  <script src="template/js/jquery.cookie.js" type="text/javascript"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="template/js/off-canvas.js"></script>
-  <script src="template/js/hoverable-collapse.js"></script>
-  <script src="template/js/template.js"></script>
-  <script src="template/js/todolist.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="template/js/dashboard.js"></script>
-  <!-- End custom js for this page-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/custom.js"></script>
+    <!-- jQuery -->
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="js/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.0.0/mdb.umd.min.js"></script>
+
 <script>
     function editInfo() {
     // Create a FormData object from the form with the id 'profileForm'

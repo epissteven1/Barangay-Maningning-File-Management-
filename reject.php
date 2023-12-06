@@ -1,20 +1,30 @@
 <?php
 include 'connection.php';
 
+$response = array();
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $stmt = $conn->prepare("DELETE FROM applicants WHERE applicant_id = ?");
-    $stmt->bind_param("i", $id);
-
-    if ($stmt->execute()) {
-        header("Location: admin_panel.php");
+    $reject = "DELETE FROM applicants WHERE applicant_id = ?";
+    $rejectStmt = $conn->prepare($reject);
+    $rejectStmt->bind_param('i', $id);
+      
+    if ($rejectStmt->execute()) {
+        $response['success'] = true;
+        // Redirect back to applicant_request.php
+        header('Location: authentication_request.php');
+        exit(); // Ensure that no further code is executed after the redirect
     } else {
-        echo "Error: " . $stmt->error;
+        $response['success'] = false;
+        $response['error'] = $conn->error; // Add this line to get the specific error
     }
-
-    $stmt->close();
+} else {
+    $response['success'] = false;
+    $response['error'] = 'Missing applicant ID';
 }
 
-$conn->close();
+echo json_encode($response);
 ?>
+
+

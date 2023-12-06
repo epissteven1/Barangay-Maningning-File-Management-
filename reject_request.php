@@ -1,33 +1,28 @@
 <?php
-// Start the session
-session_start();
-
-// Include your database connection file
 include 'connection.php';
 
-// Check if the user is authenticated
-if (!isset($_SESSION['id'])) {
-    header("Location: login.php"); // Redirect to the login page if not authenticated
-    exit();
+$response = array();
+
+if (isset($_GET['request_id'])) {
+    $request_id = $_GET['request_id'];
+    // Delete applicant from the database
+    $deleteQuery = "DELETE FROM permission_requests WHERE request_id = ?";
+    $deleteStmt = $conn->prepare($deleteQuery);
+    $deleteStmt->bind_param('i', $request_id);
+    
+    if ($deleteStmt->execute()) {
+        $response['success'] = true;
+        // Redirect back to applicant_request.php
+        header('Location: pending_request.php');
+        exit(); // Ensure that no further code is executed after the redirect
+    } else {
+        $response['success'] = false;
+        $response['error'] = $conn->error; // Add this line to get the specific error
+    }
+} else {
+    $response['success'] = false;
+    $response['error'] = 'Missing applicant ID';
 }
 
-// Check if request_id is set in the URL
-if (!isset($_GET['applicant_id'])) {
-    header("Location: pending_request.php"); // Redirect if request_id is not set
-    exit();
-}
-
-// Get the request_id from the URL
-$request_id = $_GET['request_id'];
-
-// Delete the request from the database
-$query = "DELETE FROM permission_requests WHERE request_id = ?";
-$stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, "i", $request_id);
-mysqli_stmt_execute($stmt);
-mysqli_stmt_close($stmt);
-
-// Redirect back to the permission requests page
-header("Location: pending_request.php");
-exit();
+echo json_encode($response);
 ?>

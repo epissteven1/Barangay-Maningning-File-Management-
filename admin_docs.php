@@ -66,11 +66,8 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-<?php
-  // Retrieve the document information from the database
-  $sql = "SELECT * FROM documents";
-  $result = mysqli_query($conn, $sql);
-?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,149 +87,9 @@ if (isset($_POST['submit'])) {
   <link rel="shortcut icon" href="image/Sogod.png" />
 </head>
 <body>
+
   <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="admindashboard.php">BMFMS</a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="image/Sogod.png" alt="logo"/></a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="ti-view-list"></span>
-        </button>
-        <ul class="navbar-nav mr-lg-2">
-          <li class="nav-item nav-search d-none d-lg-block">
-            <div class="input-group">
-              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                <span class="input-group-text" id="search">
-                  <i class="ti-search"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
-            </div>
-          </li>
-        </ul>
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown">
-            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-              <i class="ti-bell mx-0"></i>
-              <span class="count"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
-              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-              <a class="dropdown-item">
-                <div class="item-thumbnail">
-                  <div class="item-icon bg-success">
-                    <i class="ti-info-alt mx-0"></i>
-                  </div>
-                </div>
-                <div class="item-content">
-                  <h6 class="font-weight-normal">Application Error</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    Just now
-                  </p>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="item-thumbnail">
-                  <div class="item-icon bg-warning">
-                    <i class="ti-settings mx-0"></i>
-                  </div>
-                </div>
-                <div class="item-content">
-                  <h6 class="font-weight-normal">Settings</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    Private message
-                  </p>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="item-thumbnail">
-                  <div class="item-icon bg-info">
-                    <i class="ti-user mx-0"></i>
-                  </div>
-                </div>
-                <div class="item-content">
-                  <h6 class="font-weight-normal">New user registration</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    2 days ago
-                  </p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-              <img src="image/admin.jpg" alt="profile"/>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="ti-settings text-primary"></i>
-                Settings
-              </a>
-              <a class="dropdown-item">
-                <i class="ti-power-off text-primary"></i>
-                Logout
-              </a>
-            </div>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="ti-view-list"></span>
-        </button>
-      </div>
-    </nav>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="new.php">
-              <i class="ti-shield menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admindashboard.php">
-              <i class="ti-user menu-icon"></i>
-              <span class="menu-title">Registered Users</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin_app_list.php">
-              <i class="ti-file menu-icon"></i>
-              <span class="menu-title">Applicants</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin_docs.php">
-              <i class="ti-files menu-icon"></i>
-              <span class="menu-title">Documents</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin_activity_log.php">
-              <i class="ti-timer menu-icon"></i>
-              <span class="menu-title">Logs</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="ti-settings menu-icon"></i>
-              <span class="menu-title">Manage Request</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Pending</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Authentication</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </nav>
+   <?php include 'includes/admin_sidebar.php'; ?>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -250,26 +107,28 @@ if (isset($_POST['submit'])) {
                 <div class="card-body">
                   <h4 class="card-title">UPLOAD DOCUMENTS</h4>
                   <p class="card-description">
-                  <form action="admin_docs.php" method="post" enctype="multipart/form-data">
+
+                  <form action="#" method="post" enctype="multipart/form-data">
                     <div class="row">
                       <div class="col-6">
                         <div class="form-group">
-                          <input type="file" name="img[]" class="file-upload-default">
+                          <input type="file" name="fileToUpload" id="fileToUpload" class="file-upload-default" required>
                           <div class="input-group col-xs-2">
-                            <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                            <input type="text"  name="fileToUpload" id="fileToUpload" class="form-control file-upload-info" disabled="" placeholder="Upload Document" >
                             <span class="input-group-append">
-                              <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                              <button class="file-upload-browse btn btn-primary" type="button">
+                                <i class="ti-upload btn-icon-prepend"></i>                                                    
+                          Upload</button>
                             </span>
                           </div>
                         </div>
                       </div>
                       <div class="col-6">
-                        <button type="submit" class="btn btn-success btn-rounded btn-fw">Upload Document</button>
-                      </div>
+                      <button type="submit" name="submit" class="btn btn-outline-success btn-icon-text">
+                          <i class="ti-save-alt"></i>
+                          Submit
+                        </button>
                     </div>
-                    
-                    <!-- <input type="file" name="fileToUpload" id="fileToUpload" required>
-                    <button type="submit" class="btn btn-success btn-rounded btn-fw">Upload Document</button> -->
                   </form> 
                   </p>
                   <h4 class="card-title">DOCUMENT LISTS</h4>
@@ -284,9 +143,20 @@ if (isset($_POST['submit'])) {
                       </thead>
                       <tbody>
                         <?php
+                        include 'connection.php';
+  
+                        // Retrieve the document information from the database
+                        $sql = "SELECT * FROM documents ORDER BY upload_date DESC";
+                        $result = mysqli_query($conn, $sql);
+                        if (!$result) {
+                          die("Query failed: " . mysqli_error($conn));
+                      }
+                        
+                       
                           // Display the document information in the table
                           while ($row = mysqli_fetch_assoc($result)) {
-                            
+                          
+                          
                             echo "<tr>";
                             echo "<td>" . $row['file_uploads'] . "</td>";
                             echo "<td>" . $row['upload_date'] . "</td>";
@@ -295,93 +165,10 @@ if (isset($_POST['submit'])) {
                             echo "<button class='btn btn-danger  btn-fw' onclick=\"deleteDocument(" . $row['file_id'] . ")\"><i class='ti-trash'></i> Delete</button>";
                             echo "</td>";
                             echo "</tr>";
+                
                           }
                         ?>
-                        <!-- <tr class="table-info">
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            Herman Beck
-                          </td>
-                          <td>
-                            Photoshop
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                        </tr>
-                        <tr class="table-warning">
-                          <td>
-                            2
-                          </td>
-                          <td>
-                            Messsy Adam
-                          </td>
-                          <td>
-                            Flash
-                          </td>
-                          <td>
-                            $245.30
-                          </td>
-                          <td>
-                            July 1, 2015
-                          </td>
-                        </tr>
-                        <tr class="table-danger">
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            John Richards
-                          </td>
-                          <td>
-                            Premeire
-                          </td>
-                          <td>
-                            $138.00
-                          </td>
-                          <td>
-                            Apr 12, 2015
-                          </td>
-                        </tr>
-                        <tr class="table-success">
-                          <td>
-                            4
-                          </td>
-                          <td>
-                            Peter Meggik
-                          </td>
-                          <td>
-                            After effects
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                        </tr>
-                        <tr class="table-primary">
-                          <td>
-                            5
-                          </td>
-                          <td>
-                            Edward
-                          </td>
-                          <td>
-                            Illustrator
-                          </td>
-                          <td>
-                            $ 160.25
-                          </td>
-                          <td>
-                            May 03, 2015
-                          </td>
-                        </tr> -->
+                        
                       </tbody>
                     </table>
                   </div>
@@ -389,12 +176,13 @@ if (isset($_POST['submit'])) {
               </div>
             </div>
         </div>
+
         
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <a href="#" >bootstrapdash.com </a>2023-2024</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <a href="#" >GROUP 5 </a>2023-2024</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">BMFMS SYSTEM <a href="#" > ADDB </a> projects</span>
         </footer>
         <!-- partial -->
@@ -404,7 +192,49 @@ if (isset($_POST['submit'])) {
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+ <script>
+// Function to handle the "Edit" button click
+function editDocument(id) {
+    // Redirect to the edit document page with the document ID as a parameter
+    window.location.href = "update.php?id=" + id;
+}
 
+// Function to handle the "Delete" button click
+function deleteDocument(id) {
+    window.location.href = "delete.php?id=" +id;
+}
+
+// Function to handle the "Delete" button click
+function deleteDocument(id) {
+    if (confirm('Are you sure you want to delete this File?')) {
+    window.location.href = "delete.php?id=" +id;
+
+     // Use the applicantId in the data for the AJAX request
+     $.ajax({
+            type: 'GET',
+            url: 'delete_file.php',
+            data: { id: applicantId },
+            success: function(response) { 
+              
+                var data = JSON.parse(response);
+                console.log(data); // Add this line to log the response
+                console.log(applicantId);
+
+                if (data.success) {
+                    // Use the applicantId in the redirect URL
+                    window.location.href = 'admin_index.php';
+                } else {
+                    alert('Failed to delete Document.');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', status, error);
+            }
+            
+        });
+    }
+}
+</script>
   <!-- plugins:js -->
   <script src="template/vendors/base/vendor.bundle.base.js"></script>
   <!-- endinject -->

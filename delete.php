@@ -6,7 +6,7 @@ $response = array();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     // Delete applicant from the database
-    $deleteQuery = "DELETE FROM documents WHERE file_id = ?";
+    $deleteQuery = "DELETE FROM applicants WHERE applicant_id = ?";
     $deleteStmt = $conn->prepare($deleteQuery);
     $deleteStmt->bind_param('i', $id);
     

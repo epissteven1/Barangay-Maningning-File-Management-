@@ -28,8 +28,8 @@
 <form method="post" action="admin_form.php">
     <label for="role"></label>
     <select name="role" id="role">
-        <option value="admin">Admin</option>
         <option value="applicant">Applicant</option>
+        <option value="admin">Admin</option> 
     </select>
     <br>
 

@@ -19,7 +19,7 @@ if (isset($_SESSION['id'])) {
     if ($result) {
         $row = mysqli_fetch_assoc($result);
 
-
+        $requestCount = getTotalRequestDocumentCount($conn, $id);
 
     } else {
         // Handle query error, e.g., log the error, redirect, or display a message

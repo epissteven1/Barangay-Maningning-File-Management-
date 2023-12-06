@@ -82,7 +82,7 @@ mysqli_close($conn); // Close the database connection
 </head>
 <body>
         <div class="container-scroller">
-          <?php include 'includes/admin_sidebar.php';   ?>
+          <?php include 'includes/applicant_sidebar.php';   ?>
              <div class="main-panel">
              <div class="content-wrapper">
             <div class="row">
@@ -146,9 +146,8 @@ mysqli_close($conn); // Close the database connection
         // Add any additional styling as needed
     }
 </script>
-  
-     <!-- plugins:js -->
-  <script src="template/vendors/base/vendor.bundle.base.js"></script>
+   <!-- plugins:js -->
+   <script src="template/vendors/base/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <script src="template/vendors/chart.js/Chart.min.js"></script>
@@ -163,5 +162,6 @@ mysqli_close($conn); // Close the database connection
   <!-- Custom js for this page-->
   <script src="template/js/dashboard.js"></script>
   <!-- End custom js for this page-->
+    
 </body>
 </html>

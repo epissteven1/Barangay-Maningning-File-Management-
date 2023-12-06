@@ -30,7 +30,7 @@ if (isset($_SESSION['admin_id'])) {
     $row = mysqli_fetch_assoc($result);
 } else {
     // Redirect to the login page if the user is not logged in
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 

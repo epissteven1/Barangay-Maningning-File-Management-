@@ -31,8 +31,8 @@
 <body>
     <div class="container">
         <h1>Upload Success</h1>
-        <p>Your document has been successfully uploaded.</p>
-        <p><a href="user_index.php">Back to Upload Page</a></p>
+        <p>Your Request has been successfully Sent <br> Wait for response from  Admin .</p>
+        <p><a href="document_list.php">Back to Document List</a></p>
     </div>
 </body>
 </html>
